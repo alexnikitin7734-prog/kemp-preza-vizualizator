@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Визуализатор с Илоном — защита ИИ-кэмпа</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="preza.css">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute">
+  <symbol id="i-sheet" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 9h18M3 15h18M9 9v12"/></symbol>
+  <symbol id="i-slides" viewBox="0 0 24 24"><rect x="2" y="6" width="15" height="11" rx="2"/><path d="M7 3h13a2 2 0 0 1 2 2v9"/><path d="M5 13l3-3 3 3 2-2 2 2"/></symbol>
+  <symbol id="i-palette" viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 0 18c1.2 0 2-.8 2-1.8 0-.5-.2-.9-.5-1.3-.3-.4-.5-.8-.5-1.3 0-1 .8-1.8 1.8-1.8H17a4 4 0 0 0 4-4c0-4.4-4-7.8-9-7.8z"/><circle cx="7.5" cy="11" r="1.2"/><circle cx="10.5" cy="7" r="1.2"/><circle cx="15" cy="7.5" r="1.2"/></symbol>
+  <symbol id="i-timer" viewBox="0 0 24 24"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5M9.5 2h5M12 2v3"/></symbol>
+  <symbol id="i-spark" viewBox="0 0 24 24"><path d="M10 3l1.8 5.2L17 10l-5.2 1.8L10 17l-1.8-5.2L3 10l5.2-1.8z"/><path d="M18 14l.9 2.1L21 17l-2.1.9L18 20l-.9-2.1L15 17l2.1-.9z"/></symbol>
+  <symbol id="i-sliders" viewBox="0 0 24 24"><path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12M20 18h0"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.6-3.6 3.2-5.5 6.5-5.5s5.9 1.9 6.5 5.5"/><path d="M15.5 4.8a3.3 3.3 0 0 1 0 6.4M18 14.8c2 .7 3.2 2.4 3.5 5.2"/></symbol>
+  <symbol id="i-cal" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4M8.5 15l2.5 2.5 4.5-4.5"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M7.5 12.5l3 3 6-6.5"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 6-7"/><path d="M16 7h4v4"/></symbol>
+  <symbol id="i-pdf" viewBox="0 0 24 24"><path d="M6 2h8l5 5v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z"/><path d="M14 2v5h5M8 13h8M8 17h5"/></symbol>
+  <symbol id="i-key" viewBox="0 0 24 24"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M16 7l3 3M14 9l2 2"/></symbol>
+</svg>
+
+<div class="stage" id="stage">
+  <div class="ledger"></div>
+  <div class="deck" id="deck">
+    <b class="d"><span class="r"><i>1</i><i></i><i></i><i></i><i></i></span><span class="s"><i></i><i></i><i></i><i></i></span></b>
+    <b class="d"><span class="r"><i>2</i><i></i><i></i><i></i><i></i></span><span class="s"><i></i><i></i><i></i><i></i></span></b>
+    <b class="d"><span class="r"><i>3</i><i></i><i></i><i></i><i></i></span><span class="s"><i></i><i></i><i></i><i></i></span></b>
+    <b class="d"><span class="r"><i>4</i><i></i><i></i><i></i><i></i></span><span class="s"><i></i><i></i><i></i><i></i></span></b>
+    <b class="d"><span class="r"><i>5</i><i></i><i></i><i></i><i></i></span><span class="s"><i></i><i></i><i></i><i></i></span></b>
+    <b class="d"><span class="r"><i>6</i><i></i><i></i><i></i><i></i></span><span class="s"><i></i><i></i><i></i><i></i></span></b>
+    <b class="d"><span class="r"><i>7</i><i></i><i></i><i></i><i></i></span><span class="s"><i></i><i></i><i></i><i></i></span></b>
+    <b class="d"><span class="r"><i>8</i><i></i><i></i><i></i><i></i></span><span class="s"><i></i><i></i><i></i><i></i></span></b>
+  </div>
+  <div class="stripe" id="stripe"></div>
+  <img class="logo" src="media/logo-aplus.svg" alt="Аренда Плюс">
+
+  <section class="slide s0">
+    <p class="hero-k">Аренда Плюс · ИИ-кэмп 2026</p>
+    <h1 class="mega">Визуализатор<br><span>с Илоном</span></h1>
+    <p class="hero-sub">Из сметы в презентацию за пару кликов</p>
+  </section>
+
+  <section class="slide s1">
+    <div class="grid">
+      <div class="c bare" style="grid-area: 1 / 1 / 4 / 7"><p class="k">Защита проекта · 19 ноября</p><h1>Визуализатор<br><span class="o">с Илоном</span></h1></div>
+      <div class="c bare" style="grid-area: 4 / 1 / 7 / 7"><p class="lead">Из сметы в презентацию<br>за пару кликов</p><p class="soft" style="margin-top: 22px">Для менеджеров «Аренда Плюс»</p></div>
+      <div class="c d pic" style="grid-area: 1 / 7 / 7 / 13"><img class="fit" src="media/primer-slajd.png" alt=""><p class="cap">Пример: слайд по позиции из сметы</p></div>
+      <div class="c" style="grid-area: 7 / 1 / 9 / 4"><p class="k">Лидер</p><p class="n">Василиса Ходорченко</p></div>
+      <div class="c" style="grid-area: 7 / 4 / 9 / 7"><p class="k">Наставник</p><p class="n">Олег Олегович Кузнецов</p></div>
+      <div class="c o" style="grid-area: 7 / 7 / 9 / 11"><p class="k">Создатели</p><p class="n">Анна Лучинова, Константин Иванов</p></div>
+      <div class="c team" style="grid-area: 7 / 11 / 9 / 13"><i class="logo-spot"></i><p class="k">Аренда Плюс</p></div>
+    </div>
+  </section>
+
+  <section class="slide s2">
+    <div class="grid">
+      <div class="c bare" style="grid-area: 1 / 1 / 3 / 11"><p class="k">02 · Исходная задача</p><h2>Как работали до внедрения</h2></div>
+      <div class="c" style="grid-area: 3 / 1 / 6 / 7"><p class="ic"><svg><use href="#i-timer"/></svg></p><p class="big"><span class="glow">от 30 мин</span></p><p class="lead">на презентацию вручную</p></div>
+      <div class="c top" style="grid-area: 6 / 1 / 8 / 4"><p class="n">Таблица уже готова</p><p class="soft">Фото мелкие, детали трудно рассмотреть.</p></div>
+      <div class="c top" style="grid-area: 6 / 4 / 8 / 7"><p class="n">Презентацию собирает менеджер</p><p class="soft">Подбирает фото и вручную оформляет слайды.</p></div>
+      <div class="c bare mid" style="grid-area: 8 / 1 / 9 / 7"><p class="small">Источник · оценка по опыту менеджеров до пилота</p></div>
+      <div class="c d pic" style="grid-area: 3 / 7 / 9 / 13"><div class="sheet"><img src="media/smeta.png" alt=""><i class="hl"></i></div></div>
+    </div>
+  </section>
+
+  <section class="slide s3 silent">
+    <div class="grid">
+      <div class="c bare" style="grid-area: 1 / 1 / 3 / 11"><p class="k">03 · Демонстрация</p><h2>От сметы к слайдам за пару кликов</h2></div>
+      <div class="c d pic" style="grid-area: 3 / 1 / 8 / 9"><video id="demo" class="fit" src="media/demo.mp4" poster="media/demo.png" muted loop playsinline preload="auto"></video></div>
+      <div class="c bare mid" style="grid-area: 8 / 1 / 9 / 9"><p class="small">Видео · 29 секунд · без звука</p></div>
+      <div class="c step" style="grid-area: 3 / 9 / 5 / 13"><p class="ic"><svg><use href="#i-sheet"/></svg></p><div><p class="n">Смета в чате</p><p class="soft">Менеджер прикрепляет файл и даёт команду.</p></div></div>
+      <div class="c step" style="grid-area: 5 / 9 / 7 / 13"><p class="ic"><svg><use href="#i-slides"/></svg></p><div><p class="n">Готовые слайды</p><p class="soft">Илон собирает фото и описания позиций.</p></div></div>
+      <div class="c step o" style="grid-area: 7 / 9 / 9 / 13"><p class="ic"><svg><use href="#i-palette"/></svg></p><div><p class="n">Разные шаблоны</p><p class="soft">Оформление меняется прямо в конструкторе.</p></div></div>
+    </div>
+  </section>
+
+  <section class="slide s4">
+    <div class="grid">
+      <div class="c bare" style="grid-area: 1 / 1 / 3 / 11"><p class="k">04 · Пилот</p><h2>Что уже работает и кто тестировал</h2></div>
+      <div class="c" style="grid-area: 3 / 1 / 5 / 5"><p class="mid-n"><span class="glow">3</span></p><p class="soft">тестировщика</p></div>
+      <div class="c" style="grid-area: 3 / 5 / 5 / 9"><p class="mid-n"><span class="glow">≈ 30–50</span></p><p class="soft">реальных смет</p></div>
+      <div class="c" style="grid-area: 3 / 9 / 5 / 13"><p class="mid-n"><span class="glow">3 недели</span></p><p class="soft">длительность пилота</p></div>
+      <div class="c top" style="grid-area: 5 / 1 / 9 / 6"><p class="k">Что доступно сейчас</p><ul><li>Создание по смете или по брифу</li><li>Правки слайдов и экспорт в PDF</li></ul><p class="small" style="margin-top: auto">Только для пользователей с доступом к Jarvis.</p></div>
+      <div class="c d brief" style="grid-area: 5 / 6 / 9 / 13">
+        <figure><img src="media/brif-tema.png" alt=""><figcaption>Тема</figcaption></figure>
+        <figure><img src="media/brif-ploshchadka.png" alt=""><figcaption>Площадка</figcaption></figure>
+        <figure><img src="media/brif-rezultat.png" alt=""><figcaption>Результат</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide s5">
+    <div class="grid">
+      <div class="c bare" style="grid-area: 1 / 1 / 3 / 11"><p class="k">05 · Первые результаты</p><h2>Первые результаты по времени</h2></div>
+      <div class="c" style="grid-area: 3 / 1 / 6 / 5"><p class="ic"><svg><use href="#i-timer"/></svg></p><p class="mid-n"><span class="glow">от 30 мин</span></p><p class="soft">Вручную</p><p class="bar"><i style="--w: 100%" class="more"></i></p></div>
+      <div class="c" style="grid-area: 3 / 5 / 6 / 9"><p class="ic"><svg><use href="#i-spark"/></svg></p><p class="mid-n"><span class="glow">2–3 мин</span></p><p class="soft">С Илоном без правок</p><p class="bar"><i style="--w: 10%"></i></p></div>
+      <div class="c" style="grid-area: 3 / 9 / 6 / 13"><p class="ic"><svg><use href="#i-sliders"/></svg></p><p class="mid-n"><span class="glow">до 10 мин</span></p><p class="soft">С минимальными правками</p><p class="bar"><i style="--w: 33.3%"></i></p></div>
+      <div class="c o mid" style="grid-area: 6 / 1 / 8 / 13"><p class="lead">20 минут на презентацию — ориентир для прогноза</p></div>
+      <div class="c bare mid" style="grid-area: 8 / 1 / 9 / 13"><p class="small">Оценки менеджеров, без хронометража. Пилот: около 30–50 смет за 3 недели.</p></div>
+    </div>
+  </section>
+
+  <section class="slide s6">
+    <div class="grid">
+      <div class="c bare" style="grid-area: 1 / 1 / 3 / 11"><p class="k">06 · Прогноз</p><h2>Какой эффект возможен в декабре</h2></div>
+      <div class="c" style="grid-area: 3 / 1 / 6 / 4"><p class="ic"><svg><use href="#i-users"/></svg></p><p class="mid-n"><span class="glow">≈ 20</span></p><p class="soft">менеджеров</p></div>
+      <div class="c bare op" style="grid-area: 3 / 4 / 6 / 5"><p>×</p></div>
+      <div class="c" style="grid-area: 3 / 5 / 6 / 8"><p class="ic"><svg><use href="#i-slides"/></svg></p><p class="mid-n"><span class="glow">≈ 3</span></p><p class="soft">презентации в день на одного</p></div>
+      <div class="c bare op" style="grid-area: 3 / 8 / 6 / 9"><p>×</p></div>
+      <div class="c" style="grid-area: 3 / 9 / 6 / 13"><p class="ic"><svg><use href="#i-timer"/></svg></p><p class="mid-n"><span class="glow">20 мин</span></p><p class="soft">ориентир экономии на одну</p></div>
+      <div class="c p mid" style="grid-area: 6 / 1 / 8 / 13"><p class="lead eq">≈ 60 презентаций и ≈ 20 часов экономии в день</p></div>
+      <div class="c bare mid" style="grid-area: 8 / 1 / 9 / 13"><p class="soft">Если все подключённые менеджеры используют ИИ для подходящих смет.</p><p class="small">За месяц: фактическое число презентаций × экономия на одной.</p></div>
+    </div>
+  </section>
+
+  <section class="slide s7">
+    <div class="grid">
+      <div class="c bare" style="grid-area: 1 / 1 / 3 / 11"><p class="k">07 · Внедрение</p><h2>Как обеспечим использование в декабре</h2></div>
+      <div class="c" style="grid-area: 3 / 1 / 5 / 8"><p class="mid-n"><span class="glow">23 ноября</span></p><p class="soft">открытие доступа при одобрении</p></div>
+      <div class="c step" style="grid-area: 5 / 1 / 7 / 8"><p class="ic"><svg><use href="#i-key"/></svg></p><div><p class="n">РГП подключают менеджеров</p><p class="soft">Открывают доступ и знакомят команду с инструментом.</p></div></div>
+      <div class="c step" style="grid-area: 7 / 1 / 9 / 8"><p class="ic"><svg><use href="#i-sheet"/></svg></p><div><p class="n">Менеджеры применяют на сметах</p><p class="soft">В первую очередь на сметах с несколькими позициями.</p></div></div>
+      <div class="c d mid" style="grid-area: 3 / 8 / 9 / 13"><p class="k">Ориентир на декабрь</p><p class="mid-n" style="margin-top: 40px"><span class="glow">≈ 20</span></p><p class="lead">менеджеров</p><p class="mid-n" style="margin-top: 50px"><span class="glow">≈ 3</span></p><p class="lead">презентации</p><p class="soft">на менеджера в день</p></div>
+    </div>
+  </section>
+
+  <section class="slide s8">
+    <div class="grid">
+      <div class="c bare" style="grid-area: 1 / 1 / 3 / 11"><p class="k">08 · Готовность</p><h2>Доработки для старта не нужны</h2></div>
+      <div class="c step" style="grid-area: 3 / 1 / 5 / 6"><p class="ic"><svg><use href="#i-check"/></svg></p><div><p class="n">Продукт готов к общему запуску</p><p class="soft">От руководства нужно одобрение запуска.</p></div></div>
+      <div class="c step" style="grid-area: 5 / 1 / 7 / 6"><p class="ic"><svg><use href="#i-sliders"/></svg></p><div><p class="n">Менеджер проверяет результат</p><p class="soft">В редакторе можно править любой слайд.</p></div></div>
+      <div class="c step" style="grid-area: 7 / 1 / 9 / 6"><p class="ic"><svg><use href="#i-pdf"/></svg></p><div><p class="n">Текущий формат выгрузки — PDF</p><p class="soft">Другие форматы можно настроить отдельно.</p></div></div>
+      <div class="c d pic" style="grid-area: 3 / 6 / 7 / 13"><img class="fit" src="media/redaktor.png" alt=""><p class="cap">Jarvis Studio: редактор презентации</p></div>
+      <div class="c d mid btns" style="grid-area: 7 / 6 / 9 / 13"><img src="media/knopki.png" alt=""></div>
+    </div>
+  </section>
+
+  <section class="slide s9">
+    <div class="grid">
+      <div class="c bare" style="grid-area: 1 / 1 / 3 / 11"><p class="k">09 · Проверка эффекта</p><h2>Как подтвердим итог декабря</h2></div>
+      <div class="c top" style="grid-area: 3 / 1 / 7 / 13">
+        <table>
+          <tr><th>Метрика</th><th>До запуска</th><th>Ориентир декабря</th><th>Источник</th></tr>
+          <tr><td><b>Использование</b></td><td>3 тестировщика</td><td class="t-o">≈ 20 менеджеров</td><td>Личные кабинеты Jarvis</td></tr>
+          <tr><td><b>Объём работы</b></td><td>≈ 30–50 смет</td><td class="t-o">≈ 3 презентации в день¹</td><td>Личные кабинеты Jarvis</td></tr>
+          <tr><td><b>Время подготовки</b></td><td>От 30 мин вручную²</td><td class="t-o">До 10 мин с Илоном</td><td>Хронометраж до готового PDF</td></tr>
+        </table>
+        <p class="small" style="margin-top: auto">¹ На менеджера. &nbsp; ² Оценка менеджеров до хронометража.</p>
+      </div>
+      <div class="c o step" style="grid-area: 7 / 1 / 9 / 13"><p class="ic"><svg><use href="#i-chart"/></svg></p><div><p class="lead">Сбор в декабре · отчёт в январе 2027</p><p class="soft">Ответственная — команда создателей «Визуализатора».</p></div></div>
+    </div>
+  </section>
+
+  <section class="slide s10">
+    <div class="grid">
+      <div class="c bare" style="grid-area: 1 / 1 / 3 / 11"><p class="k">10 · Решение</p><h2>Что нужно для запуска</h2></div>
+      <div class="c o top" style="grid-area: 3 / 1 / 7 / 7"><p class="big-s">Одобрить запуск</p><p class="lead go"><svg><use href="#i-cal"/></svg>Открыть доступ<br>с 23 ноября</p><p class="soft" style="margin-top: auto">Команда соберёт данные в декабре и представит итоги в январе.</p></div>
+      <div class="c d pic" style="grid-area: 3 / 7 / 7 / 13"><img class="fit" src="media/final-slajd.png" alt=""><p class="cap">Финальный слайд клиентского предложения</p></div>
+      <div class="c mid" style="grid-area: 7 / 1 / 9 / 13"><p class="lead">Готовый инструмент для смет и брифов. <span class="o">Ожидаемый эффект проверим в декабре.</span></p></div>
+    </div>
+  </section>
+
+  <p class="foot">Аренда Плюс / ИИ-кэмп 2026</p>
+  <p class="num-p" id="nump"></p>
+  <div class="pager" id="pager"></div>
+</div>
+<div class="black" id="black" hidden></div>
+<audio id="music" src="media/music.m4a" loop preload="auto"></audio>
+<script src="preza.js"></script>
+</body>
+</html>
